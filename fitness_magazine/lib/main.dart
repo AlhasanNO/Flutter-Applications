@@ -1,4 +1,4 @@
-import 'package:fitness_magazine/pages/home_page.dart';
+import 'package:fitness_magazine/views/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
