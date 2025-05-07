@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fitness_magazine/app/dimentions.dart';
 import 'package:fitness_magazine/models/article.dart';
+import 'package:fitness_magazine/views/custom_widgets/favorite_button.dart';
 import 'package:fitness_magazine/views/details_page.dart';
-import 'package:fitness_magazine/views/themes/themes.dart';
+import 'package:fitness_magazine/app/themes.dart';
 import 'package:flutter/material.dart';
 
 class FeaturedArticleCard extends StatelessWidget {
@@ -31,36 +33,27 @@ class FeaturedArticleCard extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
-                  child: CachedNetworkImage(
-                    width: 270,
-                    height: 200,
-                    imageUrl: article.image,
-                    fit: BoxFit.cover,
-                    placeholder:
-                        (context, url) => Center(
-                          child: Image.asset(
+                  child: Hero(
+                    tag: article.image,
+                    child: CachedNetworkImage(
+                      width: 270,
+                      height: 200,
+                      imageUrl: article.image,
+                      fit: BoxFit.cover,
+                      placeholder:
+                          (context, url) => Image.asset(
                             'assets/icons/png/placeholder.png',
                             fit: BoxFit.cover,
                           ),
-                        ),
-
-                    errorWidget:
-                        (context, url, error) => Center(
-                          child: Image.asset(
+                      errorWidget:
+                          (context, url, error) => Image.asset(
                             'assets/icons/png/error.png',
                             fit: BoxFit.cover,
                           ),
-                        ),
+                    ),
                   ),
                 ),
-                Positioned(
-                  left: 5,
-                  top: 5,
-                  child: IconButton(
-                    onPressed: null,
-                    icon: Icon(Icons.favorite_outline, color: Colors.white),
-                  ),
-                ),
+                Positioned(left: 5, top: 5, child: FavoriteButton()),
               ],
             ),
             Column(

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fitness_magazine/app/dimentions.dart';
 import 'package:fitness_magazine/models/article.dart';
-import 'package:fitness_magazine/views/themes/themes.dart';
+import 'package:fitness_magazine/app/themes.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -16,7 +17,7 @@ class DetailsPage extends StatelessWidget {
             child: Stack(
               children: [
                 Hero(
-                  tag: article.category,
+                  tag: article.image,
                   child: CachedNetworkImage(
                     width: double.infinity,
                     height: 300,
