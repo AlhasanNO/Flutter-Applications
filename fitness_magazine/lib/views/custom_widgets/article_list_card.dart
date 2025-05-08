@@ -77,7 +77,7 @@ class ArticleListCard extends StatelessWidget {
                         onPressed: null,
                         icon: Icon(Icons.share, color: Colors.white),
                       ),
-                      FavoriteButton(),
+                      FavoriteButton(article: article),
                       IconButton(
                         onPressed: () {
                           Navigator.of(context).push(

@@ -10,6 +10,7 @@ class FeaturedArticleCard extends StatelessWidget {
   const FeaturedArticleCard({super.key, required this.article});
 
   final Article article;
+  final bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,11 @@ class FeaturedArticleCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(left: 5, top: 5, child: FavoriteButton()),
+                Positioned(
+                  left: 5,
+                  top: 5,
+                  child: FavoriteButton(article: article),
+                ),
               ],
             ),
             Column(

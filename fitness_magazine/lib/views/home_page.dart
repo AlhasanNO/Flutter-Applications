@@ -3,6 +3,7 @@ import 'package:fitness_magazine/models/repo.dart';
 import 'package:fitness_magazine/app/themes.dart';
 import 'package:fitness_magazine/views/custom_widgets/featured_article_card.dart';
 import 'package:fitness_magazine/views/custom_widgets/article_list_card.dart';
+import 'package:fitness_magazine/views/favorite_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -19,22 +20,36 @@ class HomePage extends StatelessWidget {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        appBar: AppBar(title: Center(child: Text('مجلة صحية', style: style1))),
+        appBar: AppBar(
+          title: Center(child: Text('مجلة صحية', style: style1)),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return FavoritePage();
+                    },
+                  ),
+                );
+              },
+              icon: Icon(Icons.favorite, color: Colors.white),
+            ),
+          ],
+        ),
         body: Column(
           children: [
             Expanded(
               flex: 7,
-              child: Padding(
+              child: ListView.separated(
                 padding: const EdgeInsets.all(15.0),
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: articles.length,
-                  separatorBuilder:
-                      (BuildContext context, int index) => dimentionW15,
-                  itemBuilder: (context, index) {
-                    return FeaturedArticleCard(article: articles[index]);
-                  },
-                ),
+                scrollDirection: Axis.horizontal,
+                itemCount: articles.length,
+                separatorBuilder:
+                    (BuildContext context, int index) => dimentionW15,
+                itemBuilder: (context, index) {
+                  return FeaturedArticleCard(article: articles[index]);
+                },
               ),
             ),
             TabBar(
